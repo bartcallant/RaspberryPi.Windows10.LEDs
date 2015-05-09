@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="RaspberryPi.Windows10.LEDs.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RaspberryPi.Windows10.LEDs"
+    RequestedTheme="Light">
+
+</Application>
