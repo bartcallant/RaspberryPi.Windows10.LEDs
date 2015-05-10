@@ -27,7 +27,7 @@ namespace RaspberryPi.Windows10.LEDs
         private const int REDLEDPIN = 26;
         private const int GREENLEDPIN = 12;
         private const int BLUELEDPIN = 16;
-        private const int YELLOWLEDPIN = 1;
+        private const int YELLOWLEDPIN = 25;
         private const int RGBREDLEDPIN = 5;
         private const int RGBGREENLEDPIN = 6;
         private const int RGBBLUELEDPIN = 13;
@@ -163,34 +163,49 @@ namespace RaspberryPi.Windows10.LEDs
                 return;
             }
 
-            if (ledName.Contains("Red"))
+            //if (ledName.Contains("Red"))
+            //    el.Fill = RedBrush;
+            //else if (ledName.Contains("Green"))
+            //    el.Fill = GreenBrush;
+            //else if (ledName.Contains("Blue"))
+            //    el.Fill = BlueBrush;
+            //else if (ledName.Contains("Yellow"))
+            //    el.Fill = YellowBrush;
+
+            if (ledName == "eRedLED")
                 el.Fill = RedBrush;
-            else if (ledName.Contains("Green"))
+            else if (ledName == "eGreenLED")
                 el.Fill = GreenBrush;
-            else if (ledName.Contains("Blue"))
+            else if (ledName == "eBlueLED")
                 el.Fill = BlueBrush;
-            else if (ledName.Contains("Yellow"))
+            else if (ledName == "eYellowLED")
                 el.Fill = YellowBrush;
+            else if (ledName == "eRGBRedLED")
+                el.Fill = RedBrush;
+            else if (ledName == "eRGBGreenLED")
+                el.Fill = GreenBrush;
+            else if (ledName == "eRGBBlueLED")
+                el.Fill = BlueBrush;
         }
 
         private void EllipseTapped(object sender, TappedRoutedEventArgs e)
         {
-            string t = (sender as Ellipse).Tag.ToString();
+            string t = (sender as Ellipse).Name;
 
             if (t == "eRedLED")
                 FlipLED(ref RedLED, t);
             else if (t == "eGreenLED")
-                FlipLED(ref RedLED, t);
+                FlipLED(ref GreenLED, t);
             else if (t == "eBlueLED")
-                FlipLED(ref RedLED, t);
+                FlipLED(ref BlueLED, t);
             else if (t == "eYellowLED")
-                FlipLED(ref RedLED, t);
+                FlipLED(ref YellowLED, t);
             else if (t == "eRGBRedLED")
-                FlipRGBLED(ref RedLED, t);
+                FlipRGBLED(ref RGBRedLED, t);
             else if (t == "eRGBGreenLED")
-                FlipRGBLED(ref RedLED, t);
+                FlipRGBLED(ref RGBGreenLED, t);
             else if (t == "eRGBBlueLED")
-                FlipRGBLED(ref RedLED, t);
+                FlipRGBLED(ref RGBBlueLED, t);
         }
     }
 }
