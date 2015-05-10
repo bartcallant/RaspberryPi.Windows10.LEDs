@@ -8,6 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Ellipse x:Name="eRedLED" Tag="RedLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eGreenLED" Tag="GreenLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eBlueLED" Tag="BlueLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eYellowLED" Tag="YellowLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eRGBRedLED" Tag="RGBRedLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eRGBGreenLED" Tag="RGBGreenLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
+                <Ellipse x:Name="eRGBBlueLED" Tag="RGBBlueLED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10" Tapped="EllipseTapped"/>
 
+            </StackPanel>
+            <TextBlock x:Name="GpioStatus" Text="Waiting to initialize GPIO..." Margin="10,50,10,10" TextAlignment="Center" FontSize="26.667" />
+        </StackPanel>
     </Grid>
 </Page>

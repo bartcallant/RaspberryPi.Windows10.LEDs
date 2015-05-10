@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="2ea64b5c-4f37-4c42-b89f-801cd7815f59"
+    Name="RaspberryPi.Windows10.LEDs"
     Publisher="CN=Bart"
     Version="1.0.0.0" />
 
