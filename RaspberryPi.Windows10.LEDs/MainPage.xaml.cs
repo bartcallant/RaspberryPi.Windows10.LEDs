@@ -42,10 +42,6 @@ namespace RaspberryPi.Windows10.LEDs
 
         private GpioController gpio = null;
 
-        // LED on -> GpioPinValue.Low
-        private const GpioPinValue LEDHIGH = GpioPinValue.Low;
-        private const GpioPinValue LEDLOW = GpioPinValue.High;
-
         private SolidColorBrush RedBrush = new SolidColorBrush(Windows.UI.Colors.Red);
         private SolidColorBrush GreenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
         private SolidColorBrush BlueBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
@@ -115,39 +111,21 @@ namespace RaspberryPi.Windows10.LEDs
         }
         public void TurnLedOn(ref GpioPin pin, string ledName)
         {
-            pin.Write(LEDHIGH);
+            pin.Write(GpioPinValue.High);
             ChangeEllipseColor(ledName, true);
         }
         public void TurnLedOff(ref GpioPin pin, string ledName)
         {
-            pin.Write(LEDLOW);
+            pin.Write(GpioPinValue.Low);
             ChangeEllipseColor(ledName, false);
         }
         private void FlipLED(ref GpioPin pin, string ledName)
         {
             var v = pin.Read();
-            if (v == LEDHIGH)
+            if (v == GpioPinValue.High)
                 TurnLedOff(ref pin, ledName);
             else
                 TurnLedOn(ref pin, ledName);
-        }
-        public void TurnRGBLedOn(ref GpioPin pin, string ledName)
-        {
-            pin.Write(GpioPinValue.High);
-            ChangeEllipseColor(ledName, true);
-        }
-        public void TurnRGBLedOff(ref GpioPin pin, string ledName)
-        {
-            pin.Write(GpioPinValue.Low);
-            ChangeEllipseColor(ledName, false);
-        }
-        private void FlipRGBLED(ref GpioPin pin, string ledName)
-        {
-            var v = pin.Read();
-            if (v == GpioPinValue.High)
-                TurnRGBLedOff(ref pin, ledName);
-            else
-                TurnRGBLedOn(ref pin, ledName);
         }
 
         private void ChangeEllipseColor(string ledName, bool High)
@@ -162,15 +140,6 @@ namespace RaspberryPi.Windows10.LEDs
                 el.Fill = GrayBrush;
                 return;
             }
-
-            //if (ledName.Contains("Red"))
-            //    el.Fill = RedBrush;
-            //else if (ledName.Contains("Green"))
-            //    el.Fill = GreenBrush;
-            //else if (ledName.Contains("Blue"))
-            //    el.Fill = BlueBrush;
-            //else if (ledName.Contains("Yellow"))
-            //    el.Fill = YellowBrush;
 
             if (ledName == "eRedLED")
                 el.Fill = RedBrush;
@@ -201,11 +170,11 @@ namespace RaspberryPi.Windows10.LEDs
             else if (t == "eYellowLED")
                 FlipLED(ref YellowLED, t);
             else if (t == "eRGBRedLED")
-                FlipRGBLED(ref RGBRedLED, t);
+                FlipLED(ref RGBRedLED, t);
             else if (t == "eRGBGreenLED")
-                FlipRGBLED(ref RGBGreenLED, t);
+                FlipLED(ref RGBGreenLED, t);
             else if (t == "eRGBBlueLED")
-                FlipRGBLED(ref RGBBlueLED, t);
+                FlipLED(ref RGBBlueLED, t);
         }
     }
 }
